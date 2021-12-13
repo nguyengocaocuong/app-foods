@@ -4,24 +4,29 @@ class CategoriesController < ApplicationController
 
   # GET /categories or /categories.json
   def index
+    @user = current_user
     @categories = Category.all
   end
 
   # GET /categories/1 or /categories/1.json
   def show
+    @user = current_user
   end
 
   # GET /categories/new
   def new
+    @user = current_user
     @category = Category.new
   end
 
   # GET /categories/1/edit
   def edit
+    @user = current_user
   end
 
   # POST /categories or /categories.json
   def create
+    @user = current_user
     @category = Category.new(category_params)
 
     respond_to do |format|

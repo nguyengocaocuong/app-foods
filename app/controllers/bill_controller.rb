@@ -1,30 +1,58 @@
 class BillController < ApplicationController
   before_action :authenticate_user!
   def bill
-    @bills = current_user.bills
-    @bill_total = [123]
-    @bill_price = [1243]
+    @user = current_user
+    @bills = @user.bills
+    @bill_total = []
+    @bill_price = []
     i = 0
     @bills.each do |b|
-      @bill_total[0] = 0
-     @bill_price[0] = 0
+      @bill_total[i] = 0
+      @bill_price[i] = 0
       b.bill_items.each do |item|
         food = Food.find(item.food_id)
-        @bill_price[i] += item.total*food.price
-        @bill_total[i] += item.total
+        if food && item
+          @bill_price[i] = @bill_price[i] + item.total*food.price
+          @bill_total[i] += item.total
+        end
       end
       i+=1
     end
   end
+
+
   def add_bill
-    bill = Bill.find_by(status: 1)
-    @total = 1
-    if bill && bill.user_id == current_user.id
+    @user = current_user
+    bills = @user.bills
+    bill = nil
+    bills.each do |b|
+      if b.status == 1
+        bill = b
+      end
+    end
+    if bill
+      bill.bill_items.each do |item|
+        if item.food_id == params[:id].to_i
+          item.total = item.total + 1;
+          item.save
+          redirect_to root_path
+          return
+        end
+      end
       bill.bill_items.create(food_id: params[:id],total:1)
-      @total = bill.bill_items.length
     else
       current_user.bills.create(time: Time.new, status:1).bill_items.create(food_id: params[:id],total:1)
     end
     redirect_to root_path
+  end
+
+  def delete
+    @user = current_user
+    billItems = Bill.find(params[:id]).bill_items;
+    billItems.each do |item|
+      BillItem.delete(item.id)
+    end
+    Bill.delete(params[:id])
+    redirect_to bill_bill_path
   end
 end

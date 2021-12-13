@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  get 'bill/bill'
   root 'static_pages#home'
+  get 'home/:id' => "static_pages#home"
+  get 'bill/bill'
+  get 'bill/delete/:id' => 'bill#delete'
+  get 'bill_items/delete/:id' => 'bill_items#delete'
+  get 'bill_items/order/:id' => 'bill_items#order'
+  
   get 'bill/add/:id' => 'bill#add_bill'
-  resources :bill_items
-  # get 'bill_items/show/:id' => "bill_items#show"
+  # resources :bill_items
+  get 'bill_items/:id' => "bill_items#show"
   resources :foods
   resources :categories
   devise_for :users

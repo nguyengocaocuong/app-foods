@@ -1,8 +1,50 @@
+<header>
+  <div class="container">
+    <div class="header-wrapper">
+      <div class="logo-brand">
+        <a href="/" style="font-weight:700;text-decoration:none">
+          HOME PAGE
+        </a>
+        </div>
+          <div class="search-form">
+            <form class="d-flex">
+              <div class="wrap">
+                <div class="search">
+                  <input
+                    type="text"
+                    class="searchTerm"
+                    placeholder="Tìm kiếm món ăn"
+                  />
+                  <button type="submit" class="searchButton">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="nav-user-action">
+          <%= link_to "Category", categories_path, class:"btn mr-2"%>
+          <%= link_to "Foods", foods_path,class:"btn"%>
+          <%= link_to "Bill", bill_bill_path,class:"btn"%>
+          <% if @user%>
+          <%= link_to "Logout",destroy_user_session_path,method: :DELETE ,class:"btn"%>
+          <%= link_to "Profile", edit_user_registration_path, class:"btn"%>
+          <%end%>
+          <% if !@user%>
+          <%= link_to "Login", new_user_session_path,class:"btn"%>
+          <%= link_to "Register", new_user_registration_path,class:"btn"%>
+          <%end%>
+           
+          </div>
+        </div>
+      </div>
+</header>
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <h1>Foods</h1>
 
-<table table="table">
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -24,9 +66,9 @@
         <td><%= food.decription %></td>
         <td><%= food.vote %></td>
         <td><%= image_tag food.image, style: 'width:50px;height:50px' %></td>
-        <td><%= link_to 'Show', food %></td>
-        <td><%= link_to 'Edit', edit_food_path(food) %></td>
-        <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', food ,class:'btn'%></td>
+        <td><%= link_to 'Edit', edit_food_path(food),class:'btn' %></td>
+        <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' },class:'btn' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +76,5 @@
 
 <br>
 
-<%= link_to 'New Food', new_food_path %>
+<%= link_to 'New Food', new_food_path , class:'btn btn-primary'%>
+</div>

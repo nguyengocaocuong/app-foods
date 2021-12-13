@@ -4,26 +4,31 @@ class FoodsController < ApplicationController
 
   # GET /foods or /foods.json
   def index
+    @user = current_user
     @foods = Food.all
   end
 
   # GET /foods/1 or /foods/1.json
   def show
+    @user = current_user
     @categories = Category.all
   end
 
   # GET /foods/new
   def new
+    @user = current_user
     @food = Food.new
     @categories = Category.all
   end
 
   # GET /foods/1/edit
   def edit
+    @user = current_user
   end
 
   # POST /foods or /foods.json
   def create
+    @user = current_user
     @food = Food.new(food_params)
    
     respond_to do |format|

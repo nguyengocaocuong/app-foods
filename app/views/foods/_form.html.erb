@@ -12,39 +12,39 @@
   <% end %>
   <div class="field">
   <% if @categories %>
-  <%= form.label "Category" %>
-   <%= form.collection_select :category_id, @categories.order(:name), :id, :name %>
+  <%= form.label "Category",class:"form-label" %>
+   <%= form.collection_select :category_id, @categories.order(:name), :id, :name,class:"form-select" %>
    <%end%>
 </div>
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :name,class:"form-label" %>
+    <%= form.text_field :name ,class:'form-control'%>
   </div>
 
   <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
+    <%= form.label :price ,class:"form-label"%>
+    <%= form.text_field :price,class:'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :total %>
-    <%= form.number_field :total %>
+    <%= form.label :total,class:"form-label" %>
+    <%= form.number_field :total ,class:'form-control'%>
   </div>
 
   <div class="field">
-    <%= form.label :decription %>
-    <%= form.text_field :decription %>
+    <%= form.label :decription,class:"form-label" %>
+    <%= form.text_area :decription,class:'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :vote %>
-    <%= form.number_field :vote %>
+    <%= form.label :vote,class:"form-label" %>
+    <%= form.number_field :vote ,class:'form-control'%>
   </div>
   <div class="field">
-  <%= form.label :image %>
+  <%= form.label :image,class:"form-label" %>
   <%= form.file_field :image %>
 </div>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Submit",class:"btn btn-primary"%>
   </div>
 <% end %>
