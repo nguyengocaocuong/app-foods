@@ -202,10 +202,18 @@ header {
 /*# sourceMappingURL=header.css.map */
 
 #banner{
-  margin-top:55px;
+  margin-top:44px;
   height:446px;
   font-family: 'Meow Script', cursive;
   background-image:url(https://foodweb.in/assets/img/hero-bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+}
+.nav-link-n{
+  text-transform: uppercase;
+  font-size: larger;
+  font-weight: 700;
+}
+.nav-link-n.active{
+  color:rgb(3, 16, 56);
 }

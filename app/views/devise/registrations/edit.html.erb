@@ -65,6 +65,11 @@
                     <div class="col-md-12"><label class="labels">Email</label><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control",placeholder:"Your email" %></div>
                 </div>
                 <div class="row mt-3">
+                <div class="col-md-12 mb-3 pb-2">
+                <%= f.file_field :avatar, autofocus: true,class:"form-control form-control-sm " %>
+                 <div class="small text-muted mt-2">Upload your avatar. </div>
+               </div></div>
+                <div class="row mt-3">
                     <div class="col-md-4"><label class="labels">New pass  <i>(leave blank if you don't want to change it)</i></label><%= f.password_field :password, autocomplete: "new-password",class:"form-control", placeholder:'Current password'%></div>
                     <div class="col-md-4"><label class="labels">Comfirm pass</label><%= f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control', placeholder:'Confirmation password' %></div>
                     <div class="col-md-4"><label class="labels">Current pass</i></label><%= f.password_field :current_password, autocomplete: "current-password", class:'form-control',placeholder:'Current pass' %></div>

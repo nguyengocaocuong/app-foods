@@ -57,6 +57,16 @@ class FoodsController < ApplicationController
 
   # DELETE /foods/1 or /foods/1.json
   def destroy
+    items = BillItem.all
+    items.each do |item|
+      if item.food_id == @food.id
+        respond_to do |format|
+          format.html { redirect_to foods_url, notice: "Can't destroy this food!" }
+          format.json { head :no_content }
+          return
+        end
+      end
+    end
     @food.destroy
     respond_to do |format|
       format.html { redirect_to foods_url, notice: "Food was successfully destroyed." }

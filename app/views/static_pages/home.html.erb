@@ -45,13 +45,13 @@
 
 
 <div class="container mt-5 mb-3" style="border:'0.5px solid gray';">
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs mb-3">
  <li class="nav-item">
-    <a class="nav-link <%=@active == -1 ? 'active' : ''%>" aria-current="page" href="/">All</a>
+    <a class="nav-link nav-link-n <%=@active == -1 ? 'active' : ''%>" aria-current="page" href="/" >All</a>
   </li>
 <%@categories.each do |category|%>
   <li class="nav-item">
-    <a class="nav-link <%=@active == category.id ? 'active' : ''%>" aria-current="page" href="/home/<%=category.id%>"><%=category.name%></a>
+    <a class="nav-link nav-link-n  <%=@active == category.id ? 'active' : ''%>" aria-current="page" href="/home/<%=category.id%>"><%=category.name%></a>
   </li>
   <%end%>
 </ul>
@@ -59,7 +59,7 @@
 <div class="row">
 <%@foods.each do |food|%>
   <div class="col-md-3">
-    <div class="card" style="width: 100%;">
+    <div class="card mb-3" style="width: 100%;">
     <%if food.image %>
     <%= image_tag food.image, class:"card-img-top img "%>
     <%end%>

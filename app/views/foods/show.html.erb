@@ -39,6 +39,9 @@
         </div>
       </div>
 </header>
+<div class="container" style="margin-top:70px">
+<div class="row">
+<div class="col-6 offset-3">
 
 <p>
   <strong>Name:</strong>
@@ -70,5 +73,11 @@
   <%= image_tag @food.image, style: 'width:50px;height:50px' %>
 </p>
 
-<%= link_to 'Edit', edit_food_path(@food) %> |
-<%= link_to 'Back', foods_path %>
+<%= link_to 'Edit', edit_food_path(@food) , class:"btn btn-primary"%> |
+<%= link_to 'Back', foods_path,class:"btn btn-primary" %>
+
+</div>
+</div>
+</div>
+
+
